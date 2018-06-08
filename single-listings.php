@@ -55,6 +55,9 @@
                         <?php 
                             $directory = "./properties/".$_GET['id']."/img/";
                             $files = glob($directory . "*");
+                            
+                            $string = file_get_contents("./properties/".$_GET['id']."/info.json");
+                            $json = json_decode($string);
 
                             //print each file name
                             for($x = 0; $x < sizeof($files) - 2; $x++)
@@ -71,11 +74,11 @@
                     <div class="listings-content">
                         <!-- Price -->
                         <div class="list-price">
-                            <p>$945 679</p>
+                            <p><?php echo $json->price ?></p>
                         </div>
-                        <h5>Town house with Modern Architecture</h5>
-                        <p class="location"><img src="img/icons/location.png" alt="">Upper Road 3411, no.34 CA</p>
-                        <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odiomattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. Etiam nec odio vestibulum est mat tis effic iturut magna. Curabitur rhoncus auctor eleifend. Fusce venenatis diam urna, eu pharetra arcu varius ac. Etiam cursus turpis lectus, id iaculis risus tempor id. Phasellus fringilla nisl sed sem scelerisque, eget aliquam magna vehicula.</p>
+                        <h5><?php echo $json->name ?></h5>
+                        <p class="location"><img src="img/icons/location.png" alt=""><?php echo $json->address ?></p>
+                        <p><?php echo $json->longdescription ?></p>
                         <!-- Meta -->
                         <div class="property-meta-data d-flex align-items-end">
                             <div class="new-tag">
@@ -83,31 +86,27 @@
                             </div>
                             <div class="bathroom">
                                 <img src="img/icons/bathtub.png" alt="">
-                                <span>2</span>
+                                <span><?php echo $json->bath ?></span>
                             </div>
                             <div class="garage">
-                                <img src="img/icons/garage.png" alt="">
-                                <span>2</span>
+                                <img src="img/icons/bed.png" alt="">
+                                <span><?php echo $json->bed ?></span>
                             </div>
                             <div class="space">
                                 <img src="img/icons/space.png" alt="">
-                                <span>120 sq ft</span>
+                                <span><?php echo $json->sqm ?> m<SUP>2</SUP></span>
                             </div>
                         </div>
                         <!-- Core Features -->
                         <ul class="listings-core-features d-flex align-items-center">
-                            <li><i class="fa fa-check" aria-hidden="true"></i> Gated Community</li>
-                            <li><i class="fa fa-check" aria-hidden="true"></i> Automatic Sprinklers</li>
-                            <li><i class="fa fa-check" aria-hidden="true"></i> Fireplace</li>
-                            <li><i class="fa fa-check" aria-hidden="true"></i> Window Shutters</li>
-                            <li><i class="fa fa-check" aria-hidden="true"></i> Ocean Views</li>
-                            <li><i class="fa fa-check" aria-hidden="true"></i> Heated Floors</li>
-                            <li><i class="fa fa-check" aria-hidden="true"></i> Heated Floors</li>
-                            <li><i class="fa fa-check" aria-hidden="true"></i> Private Patio</li>
-                            <li><i class="fa fa-check" aria-hidden="true"></i> Window Shutters</li>
-                            <li><i class="fa fa-check" aria-hidden="true"></i> Fireplace</li>
-                            <li><i class="fa fa-check" aria-hidden="true"></i> Beach Access</li>
-                            <li><i class="fa fa-check" aria-hidden="true"></i> Rooftop Terrace</li>
+                            <?php
+                                $infos = $json->infos;
+
+                                foreach($infos as $info)
+                                {
+                                    echo "<li><i class=\"fa fa-check\" aria-hidden=\"true\"></i> ".$info."</li>";
+                                }
+                            ?>
                         </ul>
                         <!-- Listings Btn Groups -->
                         <div class="listings-btn-groups">

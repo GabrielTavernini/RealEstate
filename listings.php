@@ -306,6 +306,9 @@
                         //check to see if the file is a folder/directory
                         if(is_dir($file))
                         {
+                            $string = file_get_contents($file."/info.json");
+                            $json = json_decode($string);
+
                             echo "<!-- Single Featured Property -->
                                 <div class=\"col-12 col-md-6 col-xl-4\" onclick=\"propertyClicked('".basename($file)."')\">
                                     <div class=\"single-featured-property mb-50 wow fadeInUp\" data-wow-delay=\"100ms\">
@@ -314,32 +317,32 @@
                                             <img src=\"".$file."/img/feature.jpg\" alt=\"\">
 
                                             <div class=\"tag\">
-                                                <span>For Sale</span>
+                                                <span>".$json->action."</span>
                                             </div>
                                             <div class=\"list-price\">
-                                                <p>$945 679</p>
+                                                <p>".$json->price."</p>
                                             </div>
                                         </div>
                                         <!-- Property Content -->
                                         <div class=\"property-content\">
-                                            <h5>Villa in Los Angeles</h5>
-                                            <p class=\"location\"><img src=\"img/icons/location.png\" alt=\"\">Upper Road 3411, no.34 CA</p>
-                                            <p>Integer nec bibendum lacus. Suspendisse dictum enim sit amet libero malesuada.</p>
+                                            <h5>".$json->name."</h5>
+                                            <p class=\"location\"><img src=\"img/icons/location.png\" alt=\"\">".$json->address."</p>
+                                            <p>".$json->shortdescription."</p>
                                             <div class=\"property-meta-data d-flex align-items-end justify-content-between\">
                                                 <div class=\"new-tag\">
                                                     <img src=\"img/icons/new.png\" alt=\"\">
                                                 </div>
                                                 <div class=\"bathroom\">
                                                     <img src=\"img/icons/bathtub.png\" alt=\"\">
-                                                    <span>2</span>
+                                                    <span>".$json->bath."</span>
                                                 </div>
                                                 <div class=\"garage\">
                                                     <img src=\"img/icons/garage.png\" alt=\"\">
-                                                    <span>2</span>
+                                                    <span>".$json->bed."</span>
                                                 </div>
                                                 <div class=\"space\">
                                                     <img src=\"img/icons/space.png\" alt=\"\">
-                                                    <span>120 sq ft</span>
+                                                    <span>".$json->sqm." m<SUP>2</SUP></span>
                                                 </div>
                                             </div>
                                         </div>
