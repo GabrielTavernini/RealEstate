@@ -1,3 +1,18 @@
+<?php
+    session_start();
+    
+    $t=time();
+    if (isset($_SESSION['logged']) && ($t - $_SESSION['logged'] > 900)) {
+        header('location:./adminLogout.php');
+    }
+    else {$_SESSION['logged'] = time();} 
+
+    if(!isset($_SESSION['login'])) {
+        header('LOCATION:./adminLogin.php'); die();
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +31,7 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="../style.css">
-
+    <link rel="stylesheet" href="./inputs.css">
 </head>
 
 <body>
@@ -94,6 +109,14 @@
                             $string = file_get_contents($file."/info.json");
                             $json = json_decode($string);
 
+                            $string = file_get_contents("../properties/featured.json");
+                            $featured = json_decode($string);
+                            
+                            if(in_array(basename($file), $featured))
+                                $checked = "checked";
+                            else
+                                $checked = "";
+
                             echo "<!-- Single Featured Property -->
                                 <div class=\"col-12 col-md-6 col-xl-4\">
                                     <div class=\"single-featured-property mb-50 wow fadeInUp\" data-wow-delay=\"100ms\">
@@ -112,6 +135,7 @@
                                         <div class=\"property-content\">
                                             <h5>".$json->name."</h5>
                                             <p class=\"location\"><img src=\"../img/icons/location.png\" alt=\"\">".$json->address."</p>
+                                            <label class=\"control control--checkbox\">In Evidenza<input type=\"checkbox\" ".$checked." value=\"1\" name=\"featured\" onchange=\"changeEventHandler('".basename($file)."')\"/> <div class=\"control__indicator\"></div> </label>
                                             <button style=\"width:100%\" class=\"btn south-btn\" onclick=\"propertyClicked('".basename($file)."') \">Remove</button>
                                         </div>
                                     </div>
@@ -142,6 +166,11 @@
         function propertyClicked(id) {
             if(confirm("Sei sicuro di voler elliminare questa proprietà?"))
                 window.location.href = "./adminRemove.php?id=" + id;
+        }
+
+        function changeEventHandler(event) {
+            // You can use “this” to refer to the selected element.
+            window.location.href = "./adminFeatured.php?id=" + event;
         }
     </script>
     

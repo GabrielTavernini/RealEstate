@@ -1,19 +1,27 @@
 <?php
   session_start();
   $errorMsg = "";
+  $string = file_get_contents("../properties/dictionary.json");
+  $dictionary = json_decode($string);
+  $cities = $dictionary->cities;
+  $categories = $dictionary->categories;
+  $offers = $dictionary->offers;
+  $actions = $dictionary->actions;
 
   if(isset($_POST["add"])) {
-    $string = file_get_contents("../properties/infos.json");
+    /*$string = file_get_contents("../properties/infos.json");
     $json = json_decode($string);
 
-    $id = date("Y_m_d_h_i_s");
     array_push($json->IDs, $id);
     $generalInfo = fopen("../properties/infos.json", "w");
-    fwrite($generalInfo, json_encode($json));
-
+    fwrite($generalInfo, json_encode($json));*/
+    
+    $id = date("Y_m_d_h_i_s");
     $object = (object) [
         'name' => $_POST['name'],
         'city' => $_POST['city'],
+        'category' => $_POST['category'],
+        'offers' => $_POST['offers'],
         'action' => $_POST['action'],
         'bath' => $_POST['bath'],
         'bed' => $_POST['bed'],
@@ -29,22 +37,30 @@
       mkdir($dir."/img");
 
       move_uploaded_file($_FILES["feature"]["tmp_name"],$dir."/img/feature.jpg") or die ("Failure to upload content");
+      resize_image($dir."/img/feature.jpg", 1000, 720);
+
       move_uploaded_file($_FILES["hero"]["tmp_name"],$dir."/img/hero.jpg") or die ("Failure to upload content");
+      resize_image($dir."/img/hero.jpg", 1920, 800);
 
       $total = count($_FILES['img']['name']);
-      echo $total;
       for($x = 0; $x < $total; $x++)
       {
-        move_uploaded_file($_FILES["img"]["tmp_name"][$x],$dir."/img/img".$x.".jpg") or die ("Failure to upload content");
-        echo $_FILES["img"]["name"][$x];
+        move_uploaded_file($_FILES["img"]["tmp_name"][$x], $dir."/img/img".$x.".jpg") or die ("Failure to upload content");
+        resize_image( $dir."/img/img".$x.".jpg", 1200, 604);
       }
-
-
 
       $myfile = fopen($dir."/info.json", "w");
       fwrite($myfile, json_encode($object));
 
       header("Location: ./adminHome.php"); die();
+  }
+
+  function resize_image($file, $w, $h) {
+    list($width, $height) = getimagesize($file);
+    $thumb = imagecreatetruecolor($w, $h);
+    $source = imagecreatefromjpeg($file);
+    imagecopyresized ( $thumb , $source , 0 , 0 , 0 , 0 , $w , $h , $width , $height );
+    imagejpeg($thumb, $file);
   }
 ?>
 
@@ -78,11 +94,51 @@
       <div class="form">
         <form class="add-form" id="addform" name="input" action="" method="post"  enctype="multipart/form-data">
           <input type="text" placeholder="Titolo" id="name" name="name" />
-          <input type="text" placeholder="Città" id="city" name="city"/>
+          
+          <div class="select">
+                <select name="city">
+                  <option value="">Città</option>
+                  <?php
+                    for ($x = 0; $x < count($cities); $x++) {
+                      echo "<option value='$cities[$x]'>$cities[$x]</option>";
+                    } 
+                  ?>
+                </select>
+                <div class="select__arrow"></div>
+          </div>   
+
+          <div class="select">
+                <select name="category">
+                  <option value="">Categoria</option>
+                  <?php
+                    for ($x = 0; $x < count($categories); $x++) {
+                      echo "<option value='$categories[$x]'>$categories[$x]</option>";
+                    } 
+                  ?>
+                </select>
+                <div class="select__arrow"></div>
+          </div>  
+
+          <div class="select">
+                <select name="offers">
+                  <option value="">Offerta</option>
+                  <?php
+                    for ($x = 0; $x < count($offers); $x++) {
+                      echo "<option value='$offers[$x]'>$offers[$x]</option>";
+                    } 
+                  ?>
+                </select>
+                <div class="select__arrow"></div>
+          </div>   
+
           <div class="select">
                 <select name="action">
-                    <option value="For Sale">For Sale</option>
-                    <option value="For Rent">For Rent</option>
+                  <option value="">Azione</option>
+                  <?php
+                    for ($x = 0; $x < count($actions); $x++) {
+                      echo "<option value='$actions[$x]'>$actions[$x]</option>";
+                    } 
+                  ?>
                 </select>
                 <div class="select__arrow"></div>
           </div>   

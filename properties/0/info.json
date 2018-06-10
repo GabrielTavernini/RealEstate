@@ -1,10 +1,10 @@
 {
     "name": "Nome",
-    "city": "Arco",
-    "action": "For Sale",
+    "city": "arco",
+    "action": "sell",
     "bath": 3,
     "bed": 4,
-    "price": "$950 000",
+    "price": 950000,
     "sqm": 120,
     "address": "Via Romana 19",
     "shortdescription": "Integer nec bibendum lacus. Suspendisse dictum enim sit amet libero malesuada.",

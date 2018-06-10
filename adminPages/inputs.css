@@ -50,24 +50,24 @@ h1 {
   left: 0;
   height: 20px;
   width: 20px;
-  background: #e6e6e6;
+  background: #d4d4d4;
 }
 .control--radio .control__indicator {
   border-radius: 50%;
 }
 .control:hover input ~ .control__indicator,
 .control input:focus ~ .control__indicator {
-  background: #f2f2f2;
+  background: #bdbdbd;
 }
 .control input:checked ~ .control__indicator {
-  background: #2aa1c0;
+  background: #947054;
 }
 .control:hover input:not([disabled]):checked ~ .control__indicator,
 .control input:checked:focus ~ .control__indicator {
-  background: #0e647d;
+  background: #1b140e;
 }
 .control input:disabled ~ .control__indicator {
-  background: #e6e6e6;
+  background: #d4d4d4;
   opacity: 0.6;
   pointer-events: none;
 }
@@ -84,7 +84,7 @@ h1 {
   top: 4px;
   width: 3px;
   height: 8px;
-  border: solid #fff;
+  border: solid #d4d4d4;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }

@@ -2,13 +2,13 @@
 $myPath = "../properties/".$_GET['id'];
 deleteDir($myPath);
 
-$string = file_get_contents("../properties/infos.json");
+/*$string = file_get_contents("../properties/infos.json");
 $json = json_decode($string);
 if (($key = array_search($_GET['id'], $json->IDs)) !== false) {
     unset($json->IDs[$key]);
 }
 $generalInfo = fopen("../properties/infos.json", "w");
-fwrite($generalInfo, json_encode($json));
+fwrite($generalInfo, json_encode($json));*/
 
 function deleteDir($dirPath) {
     if (! is_dir($dirPath)) {

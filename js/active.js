@@ -180,6 +180,10 @@
             slide: function (event, ui) {
                 var result = ui.values[0] + unit + ' - ' + ui.values[1] + unit;
                 t.closest('.slider-range').find('.range').html(result);
+                t.closest('.slider-range').find('.rangeInputMin').val(ui.values[0]);
+                t.closest('.slider-range').find('.rangeInputMax').val(ui.values[1]);
+                console.log(t.closest('.slider-range').find('.rangeInputMin').val());
+                console.log(t.closest('.slider-range').find('.rangeInputMax').val());
             }
         });
     })

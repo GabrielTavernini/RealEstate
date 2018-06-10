@@ -1,0 +1,6 @@
+{
+    "actions" : ["In Vendita", "In Affitto"],
+    "categories" : ["Appartamento", "Bar", "Fattoria", "Casa", "Negozio", "Terreno"],
+    "cities" : ["Arco", "Riva", "Dro", "Ledro", "Torbole", "Nago"],
+    "offers" : ["Offerta 50%", "Offerta 25%", "Offerta 10%", "Nessuna"]
+}
