@@ -14,7 +14,7 @@ $actions = $dictionary->actions;
                 <div class="advanced-search-form">
                     <!-- Search Title -->
                     <div class="search-title">
-                        <p>Search for your home</p>
+                        <p>Cerca una casa</p>
                     </div>
                     <!-- Search Form -->
                     <form action="./listings.php" method="GET" id="advanceSearch" name="advanceSearch">
@@ -272,11 +272,11 @@ $actions = $dictionary->actions;
                             <div class="col-12 d-flex justify-content-between align-items-end">
                                 <!-- More Filter -->
                                 <div class="more-filter">
-                                   <a href="#" id="moreFilter">+ More filters</a>
+                                   <!--<a href="#" id="moreFilter">+ Altri filtri</a>-->
                                 </div>
                                 <!-- Submit -->
                                 <div class="form-group mb-0">
-                                    <button type="submit" class="btn south-btn">Search</button>
+                                    <button type="submit" class="btn south-btn">Cerca</button>
                                 </div>
                             </div>
                         </div>

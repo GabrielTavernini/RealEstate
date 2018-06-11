@@ -9,7 +9,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>South - Real Estate Agency Template | Listings Details</title>
+    <title>Studio Immobiliare Europa | Dettagli Proprietà</title>
 
     <!-- Favicon  -->
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -36,7 +36,7 @@
                     <div class=\"row h-100 align-items-center\">
                         <div class=\"col-12\">
                             <div class=\"breadcumb-content\">
-                                <h3 class=\"breadcumb-title\">Property</h3>
+                                <h3 class=\"breadcumb-title\">Proprietà</h3>
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                             $string = file_get_contents("./properties/".$_GET['id']."/info.json");
                             $json = json_decode($string);
 
-                            //print each file name
+                            //print each file
                             for($x = 0; $x < sizeof($files) - 2; $x++)
                             {
                                 echo "<img src=".$directory."img".$x.".jpg>";
@@ -74,7 +74,12 @@
                     <div class="listings-content">
                         <!-- Price -->
                         <div class="list-price">
-                            <p><?php echo $json->price ?></p>
+                            <p>
+                                <?php 
+                                    setlocale(LC_MONETARY, 'it_IT');
+                                    echo(str_replace('Eu', '€', money_format('%.0n', $json->price))); 
+                                ?>
+                            </p>
                         </div>
                         <h5><?php echo $json->name ?></h5>
                         <p class="location"><img src="img/icons/location.png" alt=""><?php echo $json->address ?></p>
@@ -110,8 +115,8 @@
                         </ul>
                         <!-- Listings Btn Groups -->
                         <div class="listings-btn-groups">
-                            <a href="#" class="btn south-btn">See Floor plans</a>
-                            <a href="#" class="btn south-btn active">calculate mortgage</a>
+                            <a href="#" class="btn south-btn">Scarica Planimetrie</a>
+                            <a href="#" class="btn south-btn active">Do Something</a>
                         </div>
                     </div>
                 </div>
@@ -122,151 +127,44 @@
                             <div class="realtor---info">
                                 <h2>Jeremy Scott</h2>
                                 <p>Realtor</p>
-                                <h6><img src="img/icons/phone-call.png" alt=""> +45 677 8993000 223</h6>
-                                <h6><img src="img/icons/envelope.png" alt=""> office@template.com</h6>
+                                <a href="tel:+39 0464 519200"><h6><img src="img/icons/phone-call.png" alt=""> +39 0464 519200</h6></a>
+                                <a href="mailto:contact@southtemplate.com"><h6><img src="img/icons/envelope.png" alt=""> office@template.com</h6></a>
                             </div>
                             <div class="realtor--contact-form">
                                 <form action="#" method="post">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="realtor-name" placeholder="Your Name">
+                                        <input type="text" class="form-control" id="realtor-name" placeholder="Nome">
                                     </div>
                                     <div class="form-group">
-                                        <input type="number" class="form-control" id="realtor-number" placeholder="Your Number">
+                                        <input type="number" class="form-control" id="realtor-number" placeholder="Numero di Telefono">
                                     </div>
                                     <div class="form-group">
-                                        <input type="enumber" class="form-control" id="realtor-email" placeholder="Your Mail">
+                                        <input type="enumber" class="form-control" id="realtor-email" placeholder="La tua Mail">
                                     </div>
                                     <div class="form-group">
-                                        <textarea name="message" class="form-control" id="realtor-message" cols="30" rows="10" placeholder="Your Message"></textarea>
+                                        <textarea name="message" class="form-control" id="realtor-message" cols="30" rows="10" placeholder="Messaggio"></textarea>
                                     </div>
-                                    <button type="submit" class="btn south-btn">Send Message</button>
+                                    <button type="submit" class="btn south-btn">Invia Messagio</button>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Listing Maps -->
+            <!-- Listing Maps
             <div class="row">
                 <div class="col-12">
                     <div class="listings-maps mt-100">
-                        <div id="googleMap"></div>
+                        <div id="googleMap" address="<?php //echo $json->address ?>" ></div>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
     </section>
     <!-- ##### Listings Content Area End ##### -->
 
     <!-- ##### Footer Area Start ##### -->
-    <footer class="footer-area section-padding-100-0 bg-img gradient-background-overlay" style="background-image: url(img/bg-img/cta.jpg);">
-        <!-- Main Footer Area -->
-        <div class="main-footer-area">
-            <div class="container">
-                <div class="row">
-
-                    <!-- Single Footer Widget -->
-                    <div class="col-12 col-sm-6 col-xl-3">
-                        <div class="footer-widget-area mb-100">
-                            <!-- Widget Title -->
-                            <div class="widget-title">
-                                <h6>About Us</h6>
-                            </div>
-
-                            <img src="img/bg-img/footer.jpg" alt="">
-                            <div class="footer-logo my-4">
-                                <img src="img/core-img/logo.png" alt="">
-                            </div>
-                            <p>Integer nec bibendum lacus. Suspen disse dictum enim sit amet libero males uada feugiat. Praesent malesuada.</p>
-                        </div>
-                    </div>
-
-                    <!-- Single Footer Widget -->
-                    <div class="col-12 col-sm-6 col-xl-3">
-                        <div class="footer-widget-area mb-100">
-                            <!-- Widget Title -->
-                            <div class="widget-title">
-                                <h6>Hours</h6>
-                            </div>
-                            <!-- Office Hours -->
-                            <div class="weekly-office-hours">
-                                <ul>
-                                    <li class="d-flex align-items-center justify-content-between"><span>Monday - Friday</span> <span>09 AM - 19 PM</span></li>
-                                    <li class="d-flex align-items-center justify-content-between"><span>Saturday</span> <span>09 AM - 14 PM</span></li>
-                                    <li class="d-flex align-items-center justify-content-between"><span>Sunday</span> <span>Closed</span></li>
-                                </ul>
-                            </div>
-                            <!-- Address -->
-                            <div class="address">
-                                <h6><img src="img/icons/phone-call.png" alt=""> +45 677 8993000 223</h6>
-                                <h6><img src="img/icons/envelope.png" alt=""> office@template.com</h6>
-                                <h6><img src="img/icons/location.png" alt=""> Main Str. no 45-46, b3, 56832, Los Angeles, CA</h6>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Footer Widget -->
-                    <div class="col-12 col-sm-6 col-xl-3">
-                        <div class="footer-widget-area mb-100">
-                            <!-- Widget Title -->
-                            <div class="widget-title">
-                                <h6>Useful Links</h6>
-                            </div>
-                            <!-- Nav -->
-                            <ul class="useful-links-nav d-flex align-items-center">
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">About us</a></li>
-                                <li><a href="#">About us</a></li>
-                                <li><a href="#">Services</a></li>
-                                <li><a href="#">Properties</a></li>
-                                <li><a href="#">Listings</a></li>
-                                <li><a href="#">Testimonials</a></li>
-                                <li><a href="#">Properties</a></li>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">Testimonials</a></li>
-                                <li><a href="#">Contact</a></li>
-                                <li><a href="#">Elements</a></li>
-                                <li><a href="#">FAQ</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Single Footer Widget -->
-                    <div class="col-12 col-sm-6 col-xl-3">
-                        <div class="footer-widget-area mb-100">
-                            <!-- Widget Title -->
-                            <div class="widget-title">
-                                <h6>Featured Properties</h6>
-                            </div>
-                            <!-- Featured Properties Slides -->
-                            <div class="featured-properties-slides owl-carousel">
-                                <!-- Single Slide -->
-                                <div class="single-featured-properties-slide">
-                                    <a href="#"><img src="img/bg-img/fea-product.jpg" alt=""></a>
-                                </div>
-                                <!-- Single Slide -->
-                                <div class="single-featured-properties-slide">
-                                    <a href="#"><img src="img/bg-img/fea-product.jpg" alt=""></a>
-                                </div>
-                                <!-- Single Slide -->
-                                <div class="single-featured-properties-slide">
-                                    <a href="#"><img src="img/bg-img/fea-product.jpg" alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- Copywrite Text -->
-        <div class="copywrite-text d-flex align-items-center justify-content-center">
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-        </div>
-    </footer>
+    <?php include("footer.php"); ?>
     <!-- ##### Footer Area End ##### -->
 
     <!-- jQuery (Necessary for All JavaScript Plugins) -->
@@ -281,9 +179,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery-ui.min.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
-    <!-- Google Maps -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwuyLRa1uKNtbgx6xAJVmWy-zADgegA2s"></script>
-    <script src="js/map-active.js"></script>
+    <!-- Google Maps
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeaLRptvrBwaKGujhLGFGngAPUzfbK9MA"></script>
+    <script src="js/map-active.js"></script>-->
 
 </body>
 

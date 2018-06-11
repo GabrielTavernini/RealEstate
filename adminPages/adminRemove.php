@@ -1,17 +1,37 @@
 <?php
-$myPath = "../properties/".$_GET['id'];
+session_start();
+$t = time();
+if (isset($_SESSION['logged']) && ($t - $_SESSION['logged'] > 900)) {
+    header('location:./adminLogout.php');
+} else { $_SESSION['logged'] = time();}
+
+if (!isset($_SESSION['login'])) {
+    header('LOCATION:./adminLogin.php');die();
+}
+
+//Delete Folder
+$myPath = "../properties/" . $_GET['id'];
 deleteDir($myPath);
 
-/*$string = file_get_contents("../properties/infos.json");
-$json = json_decode($string);
-if (($key = array_search($_GET['id'], $json->IDs)) !== false) {
-    unset($json->IDs[$key]);
+//Remove From Featured
+$string = file_get_contents("../properties/featured.json");
+$json = json_decode($string, true);
+if (in_array($_GET['id'], $json)) {
+    foreach ($json as $value) {
+        if ($value == $_GET['id']) {
+            $index = array_search($value, $json);
+            array_splice($json, $index, $index + 1);
+        }
+    }
 }
-$generalInfo = fopen("../properties/infos.json", "w");
-fwrite($generalInfo, json_encode($json));*/
 
-function deleteDir($dirPath) {
-    if (! is_dir($dirPath)) {
+$generalInfo = fopen("../properties/featured.json", "w");
+fwrite($generalInfo, json_encode($json));
+
+//Delete Directory Recursive Function
+function deleteDir($dirPath)
+{
+    if (!is_dir($dirPath)) {
         throw new InvalidArgumentException("$dirPath must be a directory");
     }
     if (substr($dirPath, strlen($dirPath) - 1, 1) != '/') {
@@ -28,5 +48,4 @@ function deleteDir($dirPath) {
     rmdir($dirPath);
 }
 
-header("Location: ./adminHome.php"); die();
-?>
+//header("Location: ./adminHome.php"); die();
