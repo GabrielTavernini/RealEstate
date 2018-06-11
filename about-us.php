@@ -64,7 +64,7 @@
 
                 <div class="col-12 col-lg-4">
                     <div class="section-heading text-left wow fadeInUp" data-wow-delay="250ms">
-                        <h2>Proprietà in Evidenza</h2>
+                        <h2>In Evidenza</h2>
                         <p>I migliori affari della zona.</p>
                     </div>
 

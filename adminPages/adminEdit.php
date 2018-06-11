@@ -14,7 +14,7 @@ $string = file_get_contents("../properties/dictionary.json");
 $dictionary = json_decode($string);
 $cities = $dictionary->cities;
 $categories = $dictionary->categories;
-$offers = $dictionary->offers;
+//$offers = $dictionary->offers;
 $actions = $dictionary->actions;
 
 if (isset($_GET["id"])) {
@@ -30,9 +30,10 @@ if (isset($_POST["add"])) {
         'name' => $_POST['name'],
         'city' => $_POST['city'],
         'category' => $_POST['category'],
-        'offers' => $_POST['offers'],
+        //'offers' => $_POST['offers'],
         'action' => $_POST['action'],
-        'bath' => $_POST['bath'],
+		'rooms' => $_POST['rooms'],
+		'bath' => $_POST['bath'],
         'bed' => $_POST['bed'],
         'price' => $_POST['price'],
         'sqm' => $_POST['sqm'],
@@ -137,7 +138,7 @@ function resize_image($file, $w, $h)
                 <div class="select__arrow"></div>
           </div>
 
-          <div class="select">
+          <!--<div class="select">
                 <select name="offers">
                   <option value="">Offerta</option>
                   <?php
@@ -151,7 +152,7 @@ function resize_image($file, $w, $h)
 					?>
                 </select>
                 <div class="select__arrow"></div>
-          </div>
+          </div>-->
 
           <div class="select">
                 <select name="action">
@@ -169,6 +170,7 @@ function resize_image($file, $w, $h)
                 </select>
                 <div class="select__arrow"></div>
           </div>
+		  <input type="number_format" placeholder="Locali (numero)" id="rooms" name="rooms" value="<?php echo $json->rooms ?>"/>
           <input type="number_format" placeholder="Bagni (numero)" id="bath" name="bath" value="<?php echo $json->bath ?>"/>
           <input type="number_format" placeholder="Camere (numero)" id="bed" name="bed" value="<?php echo $json->bed ?>"/>
           <input type="number_format" placeholder="Superfice (numero di m^2)" id="sqm" name="sqm" value="<?php echo $json->sqm ?>"/>

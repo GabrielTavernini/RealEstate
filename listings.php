@@ -135,14 +135,15 @@
                                 if(($_GET['cities'] == $json->city || $_GET['cities'] == 'all')
                                     && ($_GET['categories'] == $json->category || $_GET['categories'] == 'all')
                                     && ($_GET['action'] == $json->action || $_GET['action'] == 'all')
-                                    //&& ($_GET['offers'] == $json->offers || $_GET['offers'] == 'all')
+									//&& ($_GET['offers'] == $json->offers || $_GET['offers'] == 'all')
+									&& ($_GET['rooms'] <= $json->rooms || $_GET['rooms'] == '0')
                                     && ($_GET['bedrooms'] <= $json->bed || $_GET['bedrooms'] == '0')
                                     && ($_GET['bathrooms'] <= $json->bath || $_GET['bathrooms'] == '0')
                                     && $_GET['priceMin'] <= $json->price  
                                     && $_GET['priceMax'] >= $json->price
                                     && $_GET['sqmMin'] <= $json->sqm 
                                     && $_GET['sqmMax'] >= $json->sqm
-                                    )
+                                    && (stripos($json->name, $_GET['input']) !== FALSE || $_GET['input'] == ""))
                                     {
                                         echo "<!-- Single Featured Property -->
                                             <div class=\"col-12 col-md-6 col-xl-4\" onclick=\"propertyClicked('".basename($file)."')\">

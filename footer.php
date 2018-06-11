@@ -131,6 +131,6 @@
 
 <!-- Copywrite Text -->
 <div class="copywrite-text d-flex align-items-center justify-content-center">
-    <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://gabrieltavernini.github.io" target="_blank">Gabriel Tavernini </a> & <a href="https://colorlib.com" target="_blank">ColorLib</p>
+    <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by <a href="https://gabrieltavernini.github.io" target="_blank">Gabriel Tavernini</a> with <a href="https://colorlib.com" target="_blank">ColorLib</a></p>
 </div>
 </footer>

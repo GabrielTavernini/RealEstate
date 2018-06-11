@@ -65,36 +65,30 @@ $actions = $dictionary->actions;
 
                             <div class="col-12 col-md-4 col-lg-3">
                                 <div class="form-group">
-                                    <select class="form-control" name="offers">
-                                        <option value="all" <?php if($_GET['offers'] == 'all') echo 'selected'?>>Tutte le offerte</option>
-                                        <?php
-                                            for ($x = 0; $x < count($offers); $x++) {
-                                                if($offers[$x] == $_GET['offers']) { 
-                                                    echo "<option value='$offers[$x]' selected>$offers[$x]</option>";
-                                                }
-                                                else{
-                                                    echo "<option value='$offers[$x]'>$offers[$x]</option>";
-                                                }
-                                            } 
-                                        ?>
-                                    </select>
+									<select class="form-control" name="action">
+										<option value="all" <?php if($_GET['action'] == 'all') echo 'selected'?>>Tutte le azioni</option>
+										<?php
+											for ($x = 0; $x < count($actions); $x++) {
+												if($actions[$x] == $_GET['action']) { 
+													echo "<option value='$actions[$x]' selected>$actions[$x]</option>";
+												}
+												else{
+													echo "<option value='$actions[$x]'>$actions[$x]</option>";
+												}
+											} 
+										?>
+									</select>
                                 </div>
                             </div>
 
                             <div class="col-12 col-md-4 col-xl-3">
                                 <div class="form-group">
-                                    <select class="form-control" name="action">
-                                        <option value="all" <?php if($_GET['action'] == 'all') echo 'selected'?>>Tutte le azioni</option>
-                                        <?php
-                                            for ($x = 0; $x < count($actions); $x++) {
-                                                if($actions[$x] == $_GET['action']) { 
-                                                    echo "<option value='$actions[$x]' selected>$actions[$x]</option>";
-                                                }
-                                                else{
-                                                    echo "<option value='$actions[$x]'>$actions[$x]</option>";
-                                                }
-                                            } 
-                                        ?>
+                                    <select class="form-control" name="rooms">
+										<option value="0" <?php if($_GET['rooms'] == '0') echo 'selected'?>>Locali</option>
+                                        <option value="4" <?php if($_GET['rooms'] == '4') echo 'selected'?>>4+</option>
+                                        <option value="6" <?php if($_GET['rooms'] == '6') echo 'selected'?>>6+</option>
+                                        <option value="8" <?php if($_GET['rooms'] == '8') echo 'selected'?>>8+</option>
+                                        <option value="10" <?php if($_GET['rooms'] == '10') echo 'selected'?>>10+</option>
                                     </select>
                                 </div>
                             </div>
@@ -107,7 +101,6 @@ $actions = $dictionary->actions;
                                         <option value="2" <?php if($_GET['bedrooms'] == '2') echo 'selected'?>>2+</option>
                                         <option value="3" <?php if($_GET['bedrooms'] == '3') echo 'selected'?>>3+</option>
                                         <option value="4" <?php if($_GET['bedrooms'] == '4') echo 'selected'?>>4+</option>
-                                        <option value="5" <?php if($_GET['bedrooms'] == '5') echo 'selected'?>>5+</option>
                                     </select>
                                 </div>
                             </div>
@@ -120,7 +113,6 @@ $actions = $dictionary->actions;
                                         <option value="2" <?php if($_GET['bathrooms'] == '2') echo 'selected'?>>2+</option>
                                         <option value="3" <?php if($_GET['bathrooms'] == '3') echo 'selected'?>>3+</option>
                                         <option value="4" <?php if($_GET['bathrooms'] == '4') echo 'selected'?>>4+</option>
-                                        <option value="5" <?php if($_GET['bathrooms'] == '5') echo 'selected'?>>5+</option>
                                     </select>
                                 </div>
                             </div>
@@ -186,7 +178,6 @@ $actions = $dictionary->actions;
                                 </div>
                             </div>
 
-                            <!--
                             <div class="col-12 search-form-second-steps">
                                 <div class="row">
 
@@ -267,12 +258,12 @@ $actions = $dictionary->actions;
                                         </div>
                                     </div>
                                 </div>
-                            </div>-->
+                            </div>
 
                             <div class="col-12 d-flex justify-content-between align-items-end">
                                 <!-- More Filter -->
                                 <div class="more-filter">
-                                   <!--<a href="#" id="moreFilter">+ Altri filtri</a>-->
+                                   <a href="#" id="moreFilter">+ Altri filtri</a>
                                 </div>
                                 <!-- Submit -->
                                 <div class="form-group mb-0">

@@ -1,7 +1,8 @@
 {
     "name": "Nome",
     "city": "arco",
-    "action": "sell",
+	"action": "sell",
+	"rooms": 12,
     "bath": 3,
     "bed": 4,
     "price": 950000,
