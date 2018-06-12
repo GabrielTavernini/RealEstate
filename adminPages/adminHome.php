@@ -69,6 +69,7 @@ if (!isset($_SESSION['login'])) {
 						<ul>
 							<li><a href="./adminHome.php">Home</a></li>
 							<li><a href="./adminAdd.php">Aggiungi</a></li>
+							<li><a href="./adminSettings.php">Impostazioni</a></li>
 							<li><a href="./adminLogout.php">Logout</a></li>
 						</ul>
 

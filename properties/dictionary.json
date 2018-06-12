@@ -1,6 +1,1 @@
-{
-    "actions" : ["In Vendita", "In Affitto"],
-    "categories" : ["Appartamento", "Bar", "Fattoria", "Casa", "Negozio", "Terreno"],
-    "cities" : ["Arco", "Riva", "Dro", "Ledro", "Torbole", "Nago"],
-    "offers" : ["Offerta 50%", "Offerta 25%", "Offerta 10%", "Nessuna"]
-}
+{"cities":["Arco","Riva","Dro","Nago","Ledro","Torbole","Trento"],"categories":["Bar","Appartamento","Casa","Fattoria","Terreno","Villetta"],"actions":["In Vendita","In Affitto"]}

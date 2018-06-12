@@ -127,7 +127,7 @@ function resize_image($file, $w, $h)
                   <option value="">Categoria</option>
                   <?php
 						for ($x = 0; $x < count($categories); $x++) {
-							if ($categories[$x] == $json->cateogory) {
+							if ($categories[$x] == $json->category) {
 								echo "<option value='$categories[$x]' selected>$categories[$x]</option>";
 							} else {
 								echo "<option value='$categories[$x]'>$categories[$x]</option>";
@@ -142,13 +142,13 @@ function resize_image($file, $w, $h)
                 <select name="offers">
                   <option value="">Offerta</option>
                   <?php
-						for ($x = 0; $x < count($offers); $x++) {
+						/*for ($x = 0; $x < count($offers); $x++) {
 							if ($offers[$x] == $json->offers) {
 								echo "<option value='$offers[$x]' selected>$offers[$x]</option>";
 							} else {
 								echo "<option value='$offers[$x]'>$offers[$x]</option>";
 							}
-						}
+						}*/
 					?>
                 </select>
                 <div class="select__arrow"></div>
@@ -159,7 +159,6 @@ function resize_image($file, $w, $h)
                   <option value="">Azione</option>
                   <?php
 						for ($x = 0; $x < count($actions); $x++) {
-							echo "<option value='$actions[$x]'>$actions[$x]</option>";
 							if ($actions[$x] == $json->action) {
 								echo "<option value='$actions[$x]' selected>$actions[$x]</option>";
 							} else {
