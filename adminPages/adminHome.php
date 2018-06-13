@@ -69,6 +69,7 @@ if (!isset($_SESSION['login'])) {
 						<ul>
 							<li><a href="./adminHome.php">Home</a></li>
 							<li><a href="./adminAdd.php">Aggiungi</a></li>
+							<li><a href="./adminInfos.php">Informazioni</a></li>
 							<li><a href="./adminSettings.php">Impostazioni</a></li>
 							<li><a href="./adminLogout.php">Logout</a></li>
 						</ul>
@@ -135,7 +136,7 @@ foreach ($files as $file) {
 											<h5>" . $json->name . "</h5>
 											<p class=\"location\"><img src=\"../img/icons/location.png\" alt=\"\">" . $json->address . "</p>
 											<label class=\"control control--checkbox\">In Evidenza<input type=\"checkbox\" " . $checked . " value=\"1\" name=\"featured\" onchange=\"changeEventHandler('" . basename($file) . "')\"/> <div class=\"control__indicator\"></div> </label>
-											<button style=\"width:100%\" class=\"btn south-btn\" onclick=\"propertyRemove('" . basename($file) . "') \">Remove</button>
+											<button style=\"width:100%\" class=\"btn south-btn\" onclick=\"propertyRemove('" . basename($file) . "') \">Rimuovi</button>
 										</div>
 									</div>
 								</div>";

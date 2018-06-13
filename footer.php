@@ -1,3 +1,19 @@
+<?php
+	error_reporting(0);
+	$string = file_get_contents("./infos.json");
+	$infos = json_decode($string);
+	$description = $infos->aboutus_description;
+	$phonenumber = $infos->phonenumber;
+	$email = $infos->email;
+	$address = $infos->address;
+	$days1 = $infos->days1;
+	$days2 = $infos->days2;
+	$days3 = $infos->days3;
+	$hours1 = $infos->hours1;
+	$hours2 = $infos->hours2;
+	$hours3 = $infos->hours3;
+?>
+
 <footer class="footer-area section-padding-100-0 bg-img gradient-background-overlay" style="background-image: url(img/bg-img/cta.jpg);">
 <!-- Main Footer Area -->
 <div class="main-footer-area">
@@ -16,7 +32,7 @@
                     <div class="footer-logo my-4">
                         <img src="img/core-img/logo.png" alt="">
                     </div>
-                    <p>Integer nec bibendum lacus. Suspen disse dictum enim sit amet libero males uada feugiat. Praesent malesuada.</p>
+                    <p><?php echo substr($description, 0, 118)."..."?></p>
                 </div>
             </div>
 
@@ -30,16 +46,16 @@
                     <!-- Office Hours -->
                     <div class="weekly-office-hours">
                         <ul>
-                            <li class="d-flex align-items-center justify-content-between"><span>Lunedì - Venerdì</span> <span>08.50 - 13.00</span></li>
-                            <li class="d-flex align-items-center justify-content-between"><span>Sabaro</span> <span>Chiuso</span></li>
-                            <li class="d-flex align-items-center justify-content-between"><span>Domenica</span> <span>Chiuso</span></li>
+                            <li class="d-flex align-items-center justify-content-between"><span><?php echo $days1 ?></span> <span><?php echo $hours1 ?></span></li>
+                            <li class="d-flex align-items-center justify-content-between"><span><?php echo $days2 ?></span> <span><?php echo $hours2 ?></span></li>
+                            <li class="d-flex align-items-center justify-content-between"><span><?php echo $days3 ?></span> <span><?php echo $hours3 ?></span></li>
                         </ul>
                     </div>
                     <!-- Address -->
                     <div class="address">
-                        <h6><img src="img/icons/phone-call.png" alt=""> +39 0464 519200</h6>
-                        <h6><img src="img/icons/envelope.png" alt=""> office@template.com</h6>
-                        <h6><img src="img/icons/location.png" alt=""> Via Guglielmo Marconi, 27, 38062 Arco TN</h6>
+                        <h6><img src="img/icons/phone-call.png" alt=""> <?php echo $phonenumber ?></h6>
+                        <h6><img src="img/icons/envelope.png" alt=""> <?php echo $email ?></h6>
+                        <h6><img src="img/icons/location.png" alt=""> <?php echo $address ?></h6>
                     </div>
                 </div>
             </div>

@@ -1,3 +1,11 @@
+<?php
+	$string = file_get_contents("./infos.json");
+	$infos = json_decode($string);
+	$title = $infos->aboutus_title;
+	$subtitle = $infos->aboutus_subtitle;
+	$description = $infos->aboutus_description;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,12 +61,12 @@
             <div class="row">
                 <div class="col-12 col-lg-8">
                     <div class="section-heading text-left wow fadeInUp" data-wow-delay="250ms">
-                        <h2>Noi cerchiamo la casa perfetta</h2>
-                        <p>Suspendisse dictum enim sit amet libero</p>
+                        <h2><?php echo $title ?></h2>
+                        <p><?php echo $subtitle ?></p>
                     </div>
                     <div class="about-content">
                         <img class="wow fadeInUp" data-wow-delay="350ms" src="img/bg-img/about.jpg" alt="">
-                        <p class="wow fadeInUp" data-wow-delay="450ms">Integer nec bibendum lacus. Suspendisse dictum enim sit amet libero malesuada. Integer nec bibendum lacus. Suspendisse dictum enim sit amet libero malesuada feugiat. Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst. Curabitur rhoncus auctor eleifend. Fusce venenatis diam urna, eu pharetra arcu varius ac. Etiam cursus turpis lectus, id iaculis risus tempor id. Phasellus fringilla nisl sed sem scelerisque, eget aliquam magna vehicula.</p>
+                        <p class="wow fadeInUp" data-wow-delay="450ms"><?php echo $description ?></p>
                     </div>
                 </div>
 

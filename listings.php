@@ -143,7 +143,10 @@
                                     && $_GET['priceMax'] >= $json->price
                                     && $_GET['sqmMin'] <= $json->sqm 
                                     && $_GET['sqmMax'] >= $json->sqm
-                                    && (stripos($json->name, $_GET['input']) !== FALSE || $_GET['input'] == ""))
+									&& (stripos($json->name, $_GET['input']) !== FALSE
+										|| stripos($json->shortdescription, $_GET['input']) !== FALSE 
+										|| stripos($json->longdescription, $_GET['input']) !== FALSE 
+										|| $_GET['input'] == ""))
                                     {
                                         echo "<!-- Single Featured Property -->
                                             <div class=\"col-12 col-md-6 col-xl-4\" onclick=\"propertyClicked('".basename($file)."')\">
