@@ -21,7 +21,7 @@ if (isset($_POST["add"])) {
         'cities' => explode(',', $_POST['cities']),
         'categories' => explode(',', $_POST['categories']),
         'actions' => explode(',', $_POST['actions']),
-    ];
+	];
 
     $generalInfo = fopen("../properties/dictionary.json", "w");
     fwrite($generalInfo, json_encode($object));

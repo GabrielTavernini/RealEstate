@@ -27,7 +27,7 @@
     
     
     <!-- ##### Header Area Start ##### -->
-    <?php include("header.html"); ?>
+    <?php include("header.php"); ?>
     <!-- ##### Header Area End ##### -->
     
     <!-- ##### Hero Area Start ##### -->
@@ -121,7 +121,7 @@
                                                 <span>".$json->action."</span>
                                             </div>
                                             <div class=\"list-price\">
-                                                <p>".str_replace('Eu', '€', money_format('%.0n', $json->price))."</p>
+                                                <p>".str_replace('EUR', '€', money_format('%.0n', $json->price))."</p>
                                             </div>
                                         </div>
                                         <!-- Property Content -->

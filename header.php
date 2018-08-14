@@ -1,17 +1,25 @@
+<?php
+	error_reporting(0);
+	$string = file_get_contents("./infos.json");
+	$infos = json_decode($string);
+	$phonenumber = $infos->phonenumber;
+	$email = $infos->email;
+?>
+
 <header class="header-area">
 
     <!-- Top Header Area -->
     <div class="top-header-area">
         <div class="h-100 d-md-flex justify-content-between align-items-center">
             <div class="email-address">
-                <a href="mailto:contact@southtemplate.com">contact@southtemplate.com</a>
+                <a href="mailto:<?php echo $email ?>"><?php echo $email ?></a>
             </div>
             <div class="phone-number d-flex">
                 <div class="icon">
-                    <a href="tel:+39 0464 519200"><img src="img/icons/phone-call.png" alt=""></a>
+                    <a href="tel:<?php echo $phonenumber ?>"><img src="img/icons/phone-call.png" alt=""></a>
                 </div>
                 <div class="number">
-                    <a href="tel:+39 0464 519200">+39 0464 519200</a>
+                    <a href="tel:<?php echo $phonenumber ?>"><?php echo $phonenumber ?></a>
                 </div>
             </div>
         </div>

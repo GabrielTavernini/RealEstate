@@ -42,7 +42,7 @@
     </div>
 
     <!-- ##### Header Area Start ##### -->
-    <?php include("header.html"); ?>
+    <?php include("header.php"); ?>
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcumb Area Start ##### -->
@@ -113,7 +113,7 @@
         </div>
     </section>
 
-    <!-- Google Maps -->
+    <!-- Google Maps 
     <div class="map-area mb-100">
         <div class="container">
             <div class="row">
@@ -122,7 +122,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
     <!-- ##### Footer Area Start ##### -->
     <?php include("footer.php"); ?>
@@ -140,9 +140,9 @@
     <script src="js/jquery-ui.min.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
-    <!-- Google Maps -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwuyLRa1uKNtbgx6xAJVmWy-zADgegA2s"></script>
-    <script src="js/map-active.js"></script>
+    <!-- Google Maps
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKsSYPfag-HqXCczeOIb8uRfuVTAtJ6f8"></script>
+    <script src="js/map-active.js"></script> -->
 
 </body>
 

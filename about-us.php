@@ -34,7 +34,7 @@
     </div>
 
     <!-- ##### Header Area Start ##### -->
-    <?php include("header.html"); ?>
+    <?php include("header.php"); ?>
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcumb Area Start ##### -->
@@ -107,7 +107,7 @@
                                                 <span>".$json->action."</span>
                                                 </div>
                                                 <div class=\"list-price\">
-                                                    <p>".str_replace('Eu', '€', money_format('%.0n', $json->price))."</p>
+                                                    <p>".str_replace('EUR', '€', money_format('%.0n', $json->price))."</p>
                                                 </div>
                                             </div>
                                             <!-- Property Content -->
@@ -124,7 +124,7 @@
                                                         <span>".$json->bath."</span>
                                                     </div>
                                                     <div class=\"garage\">
-                                                        <img src=\"img/icons/garage.png\" alt=\"\">
+                                                        <img src=\"img/icons/bed.png\" alt=\"\">
                                                         <span>".$json->bed."</span>
                                                     </div>
                                                     <div class=\"space\">

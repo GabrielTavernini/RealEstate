@@ -46,15 +46,15 @@ if (isset($_POST["add"])) {
     $dir = "../properties/" . $id;
 
     move_uploaded_file($_FILES["feature"]["tmp_name"], $dir . "/img/feature.jpg");
-    resize_image($dir . "/img/feature.jpg", 1000, 720);
+    resize_image_max($dir . "/img/feature.jpg", 1000, 720);
 
     move_uploaded_file($_FILES["hero"]["tmp_name"], $dir . "/img/hero.jpg");
-    resize_image($dir . "/img/hero.jpg", 1920, 800);
+    resize_image_crop($dir . "/img/hero.jpg", 1920, 800);
 	
     $total = count($_FILES['img']['name']);
     for ($x = 0; $x < $total; $x++) {
         move_uploaded_file($_FILES["img"]["tmp_name"][$x], $dir . "/img/img" . $x . ".jpg");
-        resize_image($dir . "/img/img" . $x . ".jpg", 1200, 604);
+        resize_image_max($dir . "/img/img" . $x . ".jpg" , 1200, 604);
 	}
 
 
@@ -72,7 +72,88 @@ function resize_image($file, $w, $h)
     imagecopyresized($thumb, $source, 0, 0, 0, 0, $w, $h, $width, $height);
     imagejpeg($thumb, $file);
 }
+
+function resize_image_max($path,$max_width,$max_height) {
+	$image = imagecreatefromjpeg($path);
+    $w = imagesx($image); //current width
+    $h = imagesy($image); //current height
+    if ((!$w) || (!$h)) { $GLOBALS['errors'][] = 'Image couldn\'t be resized because it wasn\'t a valid image.'; return false; }
+    
+    //try max width first...
+    $ratio = $max_width / $w;
+    $new_w = $max_width;
+    $new_h = $h * $ratio;
+    
+    //if that didn't work
+    if ($new_h > $max_height) {
+        $ratio = $max_height / $h;
+        $new_h = $max_height;
+        $new_w = $w * $ratio;
+    }
+	
+	if((($max_width - $new_w) / 2) <= 30 && (($max_height - $new_h) / 2) <= 30) {
+		resize_image($path,$max_width,$max_height);
+	}
+	else {
+		$new_image = imagecreatetruecolor ($max_width, $max_height);
+		$backcolor = imagecolorallocate($new_image,242,242,242);
+		imagefill($new_image,0,0,$backcolor);
+		imagecopyresampled($new_image,$image, ($max_width - $new_w) / 2, ($max_height - $new_h) / 2, 0, 0, $new_w, $new_h, $w, $h);
+		imagejpeg($new_image, $path);
+		return $new_image;
+	}
+	
+}
+
+function resize_image_crop($path,$width,$height) {
+	$image = imagecreatefromjpeg($path);
+    $w = @imagesx($image); //current width
+    $h = @imagesy($image); //current height
+    if ((!$w) || (!$h)) { $GLOBALS['errors'][] = 'Image couldn\'t be resized because it wasn\'t a valid image.'; return false; }
+    if (($w == $width) && ($h == $height)) { return $image; } //no resizing needed
+	if((($w/$h)-($width/$height)) < 0.3 || (($w/$h)-($width/$height)) < 0.3){ resize_image($path,$width,$height); }
+	
+    //try max width first...
+    $ratio = $width / $w;
+    $new_w = $width;
+    $new_h = $h * $ratio;
+    
+    //if that created an image smaller than what we wanted, try the other way
+    if ($new_h < $height) {
+        $ratio = $height / $h;
+        $new_h = $height;
+        $new_w = $w * $ratio;
+    }
+    
+    $image2 = imagecreatetruecolor ($new_w, $new_h);
+    imagecopyresampled($image2,$image, 0, 0, 0, 0, $new_w, $new_h, $w, $h);
+
+    //check to see if cropping needs to happen
+    if (($new_h != $height) || ($new_w != $width)) {
+        $image3 = imagecreatetruecolor ($width, $height);
+        if ($new_h > $height) { //crop vertically
+            $extra = $new_h - $height;
+            $x = 0; //source x
+            $y = round($extra / 2); //source y
+            imagecopyresampled($image3,$image2, 0, 0, $x, $y, $width, $height, $width, $height);
+        } else {
+            $extra = $new_w - $width;
+            $x = round($extra / 2); //source x
+            $y = 0; //source y
+            imagecopyresampled($image3,$image2, 0, 0, $x, $y, $width, $height, $width, $height);
+        }
+		imagedestroy($image2);
+		imagejpeg($image3, $path);
+        return $image3;
+    } else {
+		imagejpeg($image2, $path);
+        return $image2;
+    }
+}
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -99,8 +180,49 @@ function resize_image($file, $w, $h)
 
 <body>
 
+	<!-- ##### Header Area Start ##### -->
+	<header class="header-area">
 
-    <div class="login-page" style="padding-top: 50px;">
+		<!-- Main Header Area -->
+		<div class="main-header-area" id="stickyHeader">
+			<div class="classy-nav-container breakpoint-off">
+				<!-- Classy Menu -->
+				<nav class="classy-navbar justify-content-between" id="southNav">
+
+					<!-- Navbar Toggler -->
+					<div class="classy-navbar-toggler">
+						<span class="navbarToggler"><span></span><span></span><span></span></span>
+					</div>
+
+					<!-- Menu -->
+					<div class="classy-menu">
+
+						<!-- close btn -->
+						<div class="classycloseIcon">
+							<div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+						</div>
+
+						<!-- Nav Start -->
+						<div class="classynav">
+							<ul>
+								<li><a href="./adminHome.php">Home</a></li>
+								<li><a href="./adminAdd.php">Aggiungi</a></li>
+								<li><a href="./adminInfos.php">Informazioni</a></li>
+								<li><a href="./adminSettings.php">Impostazioni</a></li>
+								<li><a href="./adminLogout.php">Logout</a></li>
+							</ul>
+
+							<!-- Search Button -->
+						</div>
+						<!-- Nav End -->
+					</div>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<!-- ##### Header Area End ##### -->
+
+    <div class="login-page" style="padding-top: 110px;">
       <div class="form">
         <form class="add-form" id="addform" name="input" action="" method="post"  enctype="multipart/form-data">
           <input type="hidden" id="id" name="id" value = "<?php echo $_GET['id'] ?>"/>
@@ -183,9 +305,9 @@ function resize_image($file, $w, $h)
 				  }
 				echo $json->infos[$x];
 			  ?></textarea>
-          Cambia Feature:
+          Cambia Copertina:
           <input type="file" name="feature" id="feature"/>
-          Cambia Hero:
+          Cambia Intestazione:
           <input type="file" name="hero" id="hero"/>
           Cambia Immagini:
           <input type="file" placeholder="Immagini" name="img[]" id="img" multiple/>

@@ -263,7 +263,7 @@ $actions = $dictionary->actions;
                             <div class="col-12 d-flex justify-content-between align-items-end">
                                 <!-- More Filter -->
                                 <div class="more-filter">
-                                   <a href="#" id="moreFilter">+ Altri filtri</a>
+                                   <!--<a href="#" id="moreFilter">+ Altri filtri</a>-->
                                 </div>
                                 <!-- Submit -->
                                 <div class="form-group mb-0">

@@ -48,4 +48,4 @@ function deleteDir($dirPath)
     rmdir($dirPath);
 }
 
-//header("Location: ./adminHome.php"); die();
+header("Location: ./adminHome.php"); die();

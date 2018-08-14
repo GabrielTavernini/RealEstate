@@ -42,54 +42,43 @@ if (!isset($_SESSION['login'])) {
 	<!-- ##### Header Area Start ##### -->
 	<header class="header-area">
 
-	<!-- Main Header Area -->
-	<div class="main-header-area" id="stickyHeader">
-		<div class="classy-nav-container breakpoint-off">
-			<!-- Classy Menu -->
-			<nav class="classy-navbar justify-content-between" id="southNav">
+		<!-- Main Header Area -->
+		<div class="main-header-area" id="stickyHeader">
+			<div class="classy-nav-container breakpoint-off">
+				<!-- Classy Menu -->
+				<nav class="classy-navbar justify-content-between" id="southNav">
 
-				<!-- Logo -->
-				<a class="nav-brand" href="index.php"><img src="img/core-img/logo.png" alt=""></a>
-
-				<!-- Navbar Toggler -->
-				<div class="classy-navbar-toggler">
-					<span class="navbarToggler"><span></span><span></span><span></span></span>
-				</div>
-
-				<!-- Menu -->
-				<div class="classy-menu">
-
-					<!-- close btn -->
-					<div class="classycloseIcon">
-						<div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+					<!-- Navbar Toggler -->
+					<div class="classy-navbar-toggler">
+						<span class="navbarToggler"><span></span><span></span><span></span></span>
 					</div>
 
-					<!-- Nav Start -->
-					<div class="classynav">
-						<ul>
-							<li><a href="./adminHome.php">Home</a></li>
-							<li><a href="./adminAdd.php">Aggiungi</a></li>
-							<li><a href="./adminInfos.php">Informazioni</a></li>
-							<li><a href="./adminSettings.php">Impostazioni</a></li>
-							<li><a href="./adminLogout.php">Logout</a></li>
-						</ul>
+					<!-- Menu -->
+					<div class="classy-menu">
 
-						<!-- Search Form -->
-						<div class="south-search-form">
-							<form action="#" method="post">
-								<input type="search" name="search" id="search" placeholder="Search Anything ...">
-								<button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-							</form>
+						<!-- close btn -->
+						<div class="classycloseIcon">
+							<div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
 						</div>
 
-						<!-- Search Button -->
+						<!-- Nav Start -->
+						<div class="classynav">
+							<ul>
+								<li><a href="./adminHome.php">Home</a></li>
+								<li><a href="./adminAdd.php">Aggiungi</a></li>
+								<li><a href="./adminInfos.php">Informazioni</a></li>
+								<li><a href="./adminSettings.php">Impostazioni</a></li>
+								<li><a href="./adminLogout.php">Logout</a></li>
+							</ul>
+
+							<!-- Search Button -->
+						</div>
+						<!-- Nav End -->
 					</div>
-					<!-- Nav End -->
-				</div>
-			</nav>
+				</nav>
+			</div>
 		</div>
-	</div>
-</header>
+	</header>
 	<!-- ##### Header Area End ##### -->
 
 	<!-- ##### Listing Content Wrapper Area Start ##### -->
@@ -118,10 +107,10 @@ foreach ($files as $file) {
 		}
 
 		echo "<!-- Single Featured Property -->
-								<div class=\"col-12 col-md-6 col-xl-4\" onclick=\"propertyEdit('".basename($file)."')\">
-									<div class=\"single-featured-property mb-50 wow fadeInUp\" data-wow-delay=\"100ms\">
+								<div class=\"col-12 col-md-6 col-xl-4\">
+									<div class=\"single-featured-property mb-50 wow fadeInUp\" data-wow-delay=\"100ms\" >
 										<!-- Property Thumbnail -->
-										<div class=\"property-thumb\">
+										<div class=\"property-thumb\" onclick=\"propertyEdit('".basename($file)."')\">
 											<img src=\"" . $file . "/img/feature.jpg\" alt=\"\">
 
 											<div class=\"tag\">
@@ -133,8 +122,8 @@ foreach ($files as $file) {
 										</div>
 										<!-- Property Content -->
 										<div class=\"property-content\">
-											<h5>" . $json->name . "</h5>
-											<p class=\"location\"><img src=\"../img/icons/location.png\" alt=\"\">" . $json->address . "</p>
+											<h5 onclick=\"propertyEdit('".basename($file)."')\">" . $json->name . "</h5>
+											<p class=\"location\"><img src=\"../img/icons/location.png\" onclick=\"propertyEdit('".basename($file)."')\" alt=\"\">" . $json->address . "</p>
 											<label class=\"control control--checkbox\">In Evidenza<input type=\"checkbox\" " . $checked . " value=\"1\" name=\"featured\" onchange=\"changeEventHandler('" . basename($file) . "')\"/> <div class=\"control__indicator\"></div> </label>
 											<button style=\"width:100%\" class=\"btn south-btn\" onclick=\"propertyRemove('" . basename($file) . "') \">Rimuovi</button>
 										</div>

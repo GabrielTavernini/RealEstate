@@ -16,7 +16,6 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
@@ -26,7 +25,7 @@
     </div>
 
     <!-- ##### Header Area Start ##### -->
-    <?php include("header.html"); ?>
+    <?php include("header.php"); ?>
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcumb Area Start ##### -->
@@ -77,7 +76,7 @@
                             <p>
                                 <?php 
                                     setlocale(LC_MONETARY, 'it_IT');
-                                    echo(str_replace('Eu', '€', money_format('%.0n', $json->price))); 
+                                    echo(str_replace('EUR', '€', money_format('%.0n', $json->price))); 
                                 ?>
                             </p>
                         </div>

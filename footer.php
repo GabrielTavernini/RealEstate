@@ -81,7 +81,8 @@
                         <li><a href="./listings.php?input=&cities=all&categories=all&offers=all&action=In+Vendita&bedrooms=0&bathrooms=0&sqmMin=20&sqmMax=820&priceMin=10000&priceMax=1000000">In Vendita</a></li>
                         <li><a href="./listings.php?input=&cities=Arco&categories=all&offers=all&action=all&bedrooms=0&bathrooms=0&sqmMin=20&sqmMax=820&priceMin=10000&priceMax=1000000">Ad Arco</a></li>
                         <li><a href="./listings.php?input=&cities=Riva&categories=all&offers=all&action=all&bedrooms=0&bathrooms=0&sqmMin=20&sqmMax=820&priceMin=10000&priceMax=1000000">A Riva</a></li>
-                        <li><a href="./listings.php?input=&cities=Dro&categories=all&offers=all&action=all&bedrooms=0&bathrooms=0&sqmMin=20&sqmMax=820&priceMin=10000&priceMax=1000000">A Dro</a></li>
+						<li><a href="./listings.php?input=&cities=Dro&categories=all&offers=all&action=all&bedrooms=0&bathrooms=0&sqmMin=20&sqmMax=820&priceMin=10000&priceMax=1000000">A Dro</a></li>
+						<li><a href="./adminPages/adminLogin.php">Admin</a></li>
                     </ul>
                 </div>
             </div>
@@ -124,7 +125,7 @@
                                                 <span>".$json->action."</span>
                                                 </div>
                                                 <div class=\"list-price\">
-                                                    <p>".str_replace('Eu', '€', money_format('%.0n', $json->price))."</p>
+                                                    <p>".str_replace('EUR', '€', money_format('%.0n', $json->price))."</p>
                                                 </div>
                                             </div>
                                             <!-- Property Content -->
