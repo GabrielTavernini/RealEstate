@@ -272,11 +272,11 @@
     <!-- Active js -->
     <script src="js/active.js"></script>
 
-    <script>
-        function propertyClicked(id) {
-            window.location.href = "./single-listings.php?id=" + id;
-        }
-    </script>
+<script>
+	function propertyClicked(id) {
+		window.location.href = "./single-listings.php?id=" + id;
+	}
+</script>
 
 </body>
 

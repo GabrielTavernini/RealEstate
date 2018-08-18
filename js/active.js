@@ -57,8 +57,8 @@
         welcomeSlide.owlCarousel({
             items: 1,
             margin: 0,
-            loop: true,
-            nav: true,
+            loop: true,//welcomeSlide.children().length > 1,
+            nav: false,
             navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
             dots: true,
             autoplay: true,
@@ -104,37 +104,103 @@
             }
         });
 
-        $('.testimonials-slides').owlCarousel({
-            items: 3,
-            margin: 50,
-            loop: true,
-            center: true,
-            nav: true,
-            navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>'],
-            dots: false,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            smartSpeed: 1000,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                576: {
-                    items: 3
-                }
-            }
-        });
+		if($('.testimonials-slides').children().length > 1)
+		{
+			$('.testimonials-slides').owlCarousel({
+				items: 3,
+				margin: 50,
+				loop: true,
+				center: true,
+				nav: true,
+				navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>'],
+				dots: false,
+				autoplay: true,
+				autoplayTimeout: 5000,
+				smartSpeed: 1000,
+				responsive: {
+					0: {
+						items: 1
+					},
+					576: {
+						items: 3
+					}
+				}
+			});
+		}else{
+			$('.testimonials-slides').owlCarousel({
+				items: 3,
+				margin: 50,
+				loop: false,
+				center: true,
+				nav: false,
+				navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>'],
+				dots: false,
+				autoplay: true,
+				autoplayTimeout: 5000,
+				smartSpeed: 1000,
+				responsive: {
+					0: {
+						items: 1
+					},
+					576: {
+						items: 3
+					}
+				}
+			});
+		}
+        
 
-        $('.featured-properties-slides, .single-listings-sliders').owlCarousel({
-            items: 1,
-            margin: 0,
-            loop: true,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            smartSpeed: 1000,
-            nav: true,
-            navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>']
-        });
+        
+		
+		if($('.featured-properties-slides, .single-listings-sliders').children().length > 1) 
+		{
+			$('.featured-properties-slides, .single-listings-sliders').owlCarousel({
+				items: 1,
+				margin: 0,
+				loop: true,
+				autoplay: true,
+				autoplayTimeout: 5000,
+				smartSpeed: 1000,
+				nav: true,
+				navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>']
+			});
+		}
+		else{
+			$('.featured-properties-slides, .single-listings-sliders').owlCarousel({
+				items: 1,
+				margin: 0,
+				loop: false,
+				autoplay: true,
+				autoplayTimeout: 5000,
+				smartSpeed: 1000,
+				nav: false,
+				navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>']
+			});
+		}
+
+		if($('.featured-properties-slides2, .single-listings-sliders').children().length > 1) 
+		{
+			$('.featured-properties-slides2, .single-listings-sliders').owlCarousel({
+				items: 1,
+				margin: 0,
+				loop: true,
+				autoplay: true,
+				autoplayTimeout: 5000,
+				smartSpeed: 1000,
+				nav: false
+			});
+		}
+		else{
+			$('.featured-properties-slides2, .single-listings-sliders').owlCarousel({
+				items: 1,
+				margin: 0,
+				loop: false,
+				autoplay: true,
+				autoplayTimeout: 5000,
+				smartSpeed: 1000,
+				nav: false
+			});
+		}
     }
 
     // :: CounterUp Active Code

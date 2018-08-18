@@ -12,6 +12,25 @@
 	$hours1 = $infos->hours1;
 	$hours2 = $infos->hours2;
 	$hours3 = $infos->hours3;
+
+	$to = "1707gabri@gmail.com";
+	$subject = "WebSite - ".$_POST['contact-name'];
+	$txt = "Messaggio da: ".$_POST['contact-name']." <".$_POST['contact-number']." / ".$_POST['contact-email'].">\n\n".$_POST['contact-message'];
+	$headers = "From: ".$_POST['contact-email'];
+
+	if(isset($_POST['submit'])){
+		$b = mail($to, $subject, $txt, $headers);
+		if($b == true){
+			echo "<script>
+				confirm(\"Mail Inviata!\")
+			</script>";
+		}
+		else{
+			echo "<script>
+				confirm(\"Errore di Invio!\")
+			</script>";
+		} 
+	}
 ?>
 
 <!DOCTYPE html>
@@ -94,18 +113,18 @@
                     <div class="contact-form">
                         <form action="#" method="post">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="text" id="contact-name" placeholder="Nome">
+                                <input type="text" class="form-control" name="contact-name" id="contact-name" placeholder="Nome">
                             </div>
                             <div class="form-group">
-                                <input type="number" class="form-control" name="number" id="contact-number" placeholder="Numero di Telefono">
+                                <input type="number" class="form-control" name="contact-number" id="contact-number" placeholder="Numero di Telefono">
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" name="email" id="contact-email" placeholder="La tua Email">
+                                <input type="email" class="form-control" name="contact-email" id="contact-email" placeholder="La tua Email">
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" name="message" id="message" cols="30" rows="10" placeholder="Messaggio"></textarea>
+                                <textarea class="form-control" name="contact-message" id="contact-message" cols="30" rows="10" placeholder="Messaggio"></textarea>
                             </div>
-                            <button type="submit" class="btn south-btn">Invia</button>
+                            <button name="submit" type="submit" class="btn south-btn">Invia</button>
                         </form>
                     </div>
                 </div>

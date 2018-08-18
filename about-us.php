@@ -65,7 +65,7 @@
                         <p><?php echo $subtitle ?></p>
                     </div>
                     <div class="about-content">
-                        <img class="wow fadeInUp" data-wow-delay="350ms" src="img/bg-img/about.jpg" alt="">
+                        <img class="wow fadeInUp" data-wow-delay="350ms" src="img/bg-img/who.jpg" alt="">
                         <p class="wow fadeInUp" data-wow-delay="450ms"><?php echo $description ?></p>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                         <p>I migliori affari della zona.</p>
                     </div>
 
-                    <div class="featured-properties-slides owl-carousel wow fadeInUp" data-wow-delay="350ms">
+                    <div class="featured-properties-slides2 owl-carousel wow fadeInUp" data-wow-delay="350ms">
                     
                         <?php 
                             //path to directory to scan

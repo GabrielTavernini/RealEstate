@@ -28,7 +28,7 @@
                         <h6>Chi siamo</h6>
                     </div>
 
-                    <img src="img/bg-img/footer.jpg" alt="">
+                    <img src="img/bg-img/streetview.jpg" alt="">
                     <div class="footer-logo my-4">
                         <img src="img/core-img/logo.png" alt="">
                     </div>
@@ -150,4 +150,10 @@
 <div class="copywrite-text d-flex align-items-center justify-content-center">
     <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by <a href="https://gabrieltavernini.github.io" target="_blank">Gabriel Tavernini</a> with <a href="https://colorlib.com" target="_blank">ColorLib</a></p>
 </div>
+
+<script>
+		function propertyClicked(id) {
+			window.location.href = "./single-listings.php?id=" + id;
+		}
+</script>
 </footer>

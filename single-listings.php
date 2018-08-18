@@ -1,3 +1,24 @@
+<?php
+	error_reporting(0);
+	$string = file_get_contents("./infos.json");
+	$infos = json_decode($string);
+	$phonenumber = $infos->phonenumber;
+	$email = $infos->email;
+
+	if(isset($_POST['submit'])){
+		if(mail('1707gabri@gmail.com', $_POST['realtor-name'], $_POST['realtor-message'], 'From:'.$_POST['realtor-name'].'<'.$_POST['realtor-email'].' ; '.$_POST['realtor-number'].'>')){
+			echo "<script>
+				confirm(\"Mail Inviata!\")
+			</script>";
+		}
+		else{
+			echo "<script>
+				confirm(\"Errore di Invio!\")
+			</script>";
+		} 
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -122,28 +143,28 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="contact-realtor-wrapper">
                         <div class="realtor-info">
-                            <img src="img/bg-img/listing.jpg" alt="">
+                            <img src="img/bg-img/profile.jpg" alt="">
                             <div class="realtor---info">
-                                <h2>Jeremy Scott</h2>
+                                <h2>Michele Fratangelo</h2>
                                 <p>Realtor</p>
-                                <a href="tel:+39 0464 519200"><h6><img src="img/icons/phone-call.png" alt=""> +39 0464 519200</h6></a>
-                                <a href="mailto:contact@southtemplate.com"><h6><img src="img/icons/envelope.png" alt=""> office@template.com</h6></a>
+                                <a href="tel:<?php echo $phonenumber ?>"><h6><img src="img/icons/phone-call.png" alt=""> <?php echo $phonenumber ?></h6></a>
+                                <a href="mailto:<?php echo $email ?>"><h6><img src="img/icons/envelope.png" alt=""> <?php echo $email ?></h6></a>
                             </div>
                             <div class="realtor--contact-form">
                                 <form action="#" method="post">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="realtor-name" placeholder="Nome">
+                                        <input type="text" class="form-control" name="realtor-name" placeholder="Nome">
                                     </div>
                                     <div class="form-group">
-                                        <input type="number" class="form-control" id="realtor-number" placeholder="Numero di Telefono">
+                                        <input type="number" class="form-control" name="realtor-number" placeholder="Numero di Telefono">
                                     </div>
                                     <div class="form-group">
-                                        <input type="enumber" class="form-control" id="realtor-email" placeholder="La tua Mail">
+                                        <input type="enumber" class="form-control" name="realtor-email" placeholder="La tua Mail">
                                     </div>
                                     <div class="form-group">
-                                        <textarea name="message" class="form-control" id="realtor-message" cols="30" rows="10" placeholder="Messaggio"></textarea>
+                                        <textarea name="message" class="form-control" name="realtor-message" cols="30" rows="10" placeholder="Messaggio"></textarea>
                                     </div>
-                                    <button type="submit" class="btn south-btn">Invia Messagio</button>
+                                    <button name="submit" type="submit" class="btn south-btn">Invia Messagio</button>
                                 </form>
                             </div>
                         </div>
