@@ -64,7 +64,7 @@ if (!isset($_SESSION['login'])) {
 						<!-- Nav Start -->
 						<div class="classynav">
 							<ul>
-								<li><a href="./adminHome.php">Home</a></li>
+								<li><a href="../index.php">Home</a></li>
 								<li><a href="./adminAdd.php">Aggiungi</a></li>
 								<li><a href="./adminInfos.php">Informazioni</a></li>
 								<li><a href="./adminSettings.php">Impostazioni</a></li>

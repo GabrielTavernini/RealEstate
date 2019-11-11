@@ -13,7 +13,7 @@
 	$hours2 = $infos->hours2;
 	$hours3 = $infos->hours3;
 
-	$to = "1707gabri@gmail.com";
+	$to = $email;
 	$subject = "WebSite - ".$_POST['contact-name'];
 	$txt = "Messaggio da: ".$_POST['contact-name']." <".$_POST['contact-number']." / ".$_POST['contact-email'].">\n\n".$_POST['contact-message'];
 	$headers = "From: ".$_POST['contact-email'];

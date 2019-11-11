@@ -14,7 +14,7 @@ $actions = $dictionary->actions;
                 <div class="advanced-search-form">
                     <!-- Search Title -->
                     <div class="search-title">
-                        <p>Cerca una casa</p>
+                        <p>Cerca un immobile</p>
                     </div>
                     <!-- Search Form -->
                     <form action="./listings.php" method="GET" id="advanceSearch" name="advanceSearch">
@@ -120,9 +120,9 @@ $actions = $dictionary->actions;
                             <div class="col-12 col-md-8 col-lg-12 col-xl-5 d-flex">
                                 <!-- Space Range -->
                                 <div class="slider-range">
-                                    <div data-min="20" data-max="820" data-unit=" m<SUP>2</SUP>" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"  
+                                    <div data-min="0" data-max="820" data-unit=" m<SUP>2</SUP>" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"  
                                     <?php if(isset($_GET['sqmMin'])) echo " data-value-min = \"".$_GET['sqmMin']."\"";
-                                        else echo "data-value-min=\"20\""; 
+                                        else echo "data-value-min=\"0\""; 
                                         if(isset($_GET['sqmMax'])) echo " data-value-max = \"".$_GET['sqmMax']."\"";
                                         else echo "data-value-max=\"820\""?>>
 
@@ -133,7 +133,7 @@ $actions = $dictionary->actions;
 
                                     <input class="rangeInputMin" type="hidden" name="sqmMin" 
                                         <?php if(isset($_GET['sqmMin'])) echo " value=\"".$_GET['sqmMin']."\"";
-                                        else echo "value=\"20\""; ?>>
+                                        else echo "value=\"0\""; ?>>
 
                                     <input class="rangeInputMax" type="hidden" name="sqmMax"
                                         <?php if(isset($_GET['sqmMax'])) echo " value=\"".$_GET['sqmMax']."\"";
@@ -142,7 +142,7 @@ $actions = $dictionary->actions;
                                     <div class="range">
                                         <?php 
                                         if(isset($_GET['sqmMin'])) echo $_GET['sqmMin']." m<SUP>2</SUP> -";
-                                        else echo "20 m<SUP>2</SUP> -";
+                                        else echo "0 m<SUP>2</SUP> -";
 
                                         if(isset($_GET['sqmMax'])) echo " ".$_GET['sqmMax']." m<SUP>2</SUP>";
                                         else echo " 820 m<SUP>2</SUP>"; ?></div>
@@ -150,9 +150,9 @@ $actions = $dictionary->actions;
 
                                 <!-- Distance Range -->
                                 <div class="slider-range">
-                                    <div data-min="10000" data-max="1000000" data-unit=" €" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
-                                    <?php if(isset($_GET['priceMin'])) echo " data-value-min = \"".$_GET['sqpriceMinmMin']."\"";
-                                        else echo "data-value-min=\"10000\""; 
+                                    <div data-min="0" data-max="1000000" data-unit=" €" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
+                                    <?php if(isset($_GET['priceMin'])) echo " data-value-min = \"".$_GET['priceMin']."\"";
+                                        else echo "data-value-min=\"0\""; 
                                         if(isset($_GET['priceMax'])) echo " data-value-max = \"".$_GET['priceMax']."\"";
                                         else echo "data-value-max=\"1000000\""?>>
 
@@ -162,7 +162,7 @@ $actions = $dictionary->actions;
                                     </div>
                                     <input class="rangeInputMin" type="hidden" name="priceMin"
                                         <?php if(isset($_GET['priceMin'])) echo " value=\"".$_GET['priceMin']."\"";
-                                        else echo "value=\"10000\""; ?>>
+                                        else echo "value=\"0\""; ?>>
                                         
                                     <input class="rangeInputMax" type="hidden" name="priceMax"
                                         <?php if(isset($_GET['priceMax'])) echo " value=\"".$_GET['priceMax']."\"";
@@ -171,7 +171,7 @@ $actions = $dictionary->actions;
                                     <div class="range">
                                         <?php 
                                         if(isset($_GET['priceMin'])) echo $_GET['priceMin']." € -";
-                                        else echo "10000 € -";
+                                        else echo "0 € -";
 
                                         if(isset($_GET['priceMax'])) echo " ".$_GET['priceMax']." €";
                                         else echo " 1000000 €"; ?></div>

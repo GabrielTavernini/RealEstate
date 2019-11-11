@@ -57,11 +57,18 @@ if (isset($_POST["add"])) {
         resize_image_max($dir . "/img/img" . $x . ".jpg" , 1200, 604);
 	}
 
-
+    $total = count($_FILES['plan']['name']);
+    for ($x = 0; $x < $total; $x++) {
+        echo $x;
+        echo pathinfo($_FILES["plan"]["name"][$x])[basename];
+        move_uploaded_file($_FILES["plan"]["tmp_name"][$x], $dir . "/plans/".$_FILES["plan"]["name"][$x]);
+	}
+	
+	
     $myfile = fopen($dir . "/info.json", "w");
     fwrite($myfile, json_encode($object));
 
-    header("Location: ./adminHome.php");die();
+    //header("Location: ./adminHome.php");die();
 }
 
 function resize_image($file, $w, $h)
@@ -205,7 +212,7 @@ function resize_image_crop($path,$width,$height) {
 						<!-- Nav Start -->
 						<div class="classynav">
 							<ul>
-								<li><a href="./adminHome.php">Home</a></li>
+								<li><a href="../index.php">Home</a></li>
 								<li><a href="./adminAdd.php">Aggiungi</a></li>
 								<li><a href="./adminInfos.php">Informazioni</a></li>
 								<li><a href="./adminSettings.php">Impostazioni</a></li>
@@ -296,7 +303,7 @@ function resize_image_crop($path,$width,$height) {
           <input type="number_format" placeholder="Camere (numero)" id="bed" name="bed" value="<?php echo $json->bed ?>"/>
           <input type="number_format" placeholder="Superfice (numero di m^2)" id="sqm" name="sqm" value="<?php echo $json->sqm ?>"/>
           <input type="text" placeholder="Prezzo (es. 120000)" id="price" name="price" value="<?php echo $json->price ?>"/>
-          <input type="text" placeholder="Locazione" id="address" name="address" value="<?php echo $json->address ?>"/>
+          <input type="text" placeholder="Posizione" id="address" name="address" value="<?php echo $json->address ?>"/>
           <textarea name="shortdescription" form="addform" placeholder="Descrizione Corta" id="shortdescription"><?php echo $json->shortdescription ?></textarea>
           <textarea name="longdescription" form="addform" placeholder="Descrizione Lunga" id="longdescription" style="height:150px;"><?php echo $json->longdescription ?></textarea>
           <textarea name="infos" form="addform" placeholder="Caratteristiche della proprietà separate da una virgola" id="infos" style="height:150px;"><?php
@@ -311,6 +318,8 @@ function resize_image_crop($path,$width,$height) {
           <input type="file" name="hero" id="hero"/>
           Cambia Immagini:
           <input type="file" placeholder="Immagini" name="img[]" id="img" multiple/>
+          Carica Planimetria:
+          <input type="file" placeholder="Planimetrie" name="plan[]" id="plan" multiple/>
           <button type="submit" name="add">MODIFICA</button>
         </form>
 

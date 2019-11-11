@@ -58,12 +58,19 @@ if (isset($_POST["add"])) {
         move_uploaded_file($_FILES["img"]["tmp_name"][$x], $dir . "/img/img" . $x . ".jpg");
         resize_image_max($dir . "/img/img" . $x . ".jpg" , 1200, 604);
 	}
-
+    
+    $total = count($_FILES['plan']['name']);
+    mkdir($dir . "/plans");
+    for ($x = 0; $x < $total; $x++) {
+        move_uploaded_file($_FILES["plan"]["tmp_name"][$x], $dir . "/plans/".$_FILES["plan"]["name"][$x]);
+	}
+	
+	echo $_FILES["plan"]["tmp_name"][$x];
 
     $myfile = fopen($dir . "/info.json", "w");
     fwrite($myfile, json_encode($object));
 
-    header("Location: ./adminHome.php");die();
+    //header("Location: ./adminHome.php");die();
 }
 
 function resize_image($file, $w, $h)
@@ -204,7 +211,7 @@ function resize_image_crop($path,$width,$height) {
 						<!-- Nav Start -->
 						<div class="classynav">
 							<ul>
-								<li><a href="./adminHome.php">Home</a></li>
+								<li><a href="../index.php">Home</a></li>
 								<li><a href="./adminAdd.php">Aggiungi</a></li>
 								<li><a href="./adminInfos.php">Informazioni</a></li>
 								<li><a href="./adminSettings.php">Impostazioni</a></li>
@@ -278,7 +285,7 @@ function resize_image_crop($path,$width,$height) {
           <input type="number_format" placeholder="Camere (numero)" id="bed" name="bed"/>
           <input type="number_format" placeholder="Superfice (numero di m^2)" id="sqm" name="sqm"/>
           <input type="text" placeholder="Prezzo (es. 120000)" id="price" name="price"/>
-          <input type="text" placeholder="Locazione" id="address" name="address"/>
+          <input type="text" placeholder="Posizione" id="address" name="address"/>
           <textarea name="shortdescription" form="addform" placeholder="Descrizione Corta" id="shortdescription"></textarea>
           <textarea name="longdescription" form="addform" placeholder="Descrizione Lunga" id="longdescription" style="height:150px;"></textarea>
           <textarea name="infos" form="addform" placeholder="Caratteristiche della proprietà separate da una virgola" id="infos" style="height:150px;"></textarea>
@@ -288,6 +295,8 @@ function resize_image_crop($path,$width,$height) {
           <input type="file" name="hero" id="hero"/>
           Carica Immagini:
           <input type="file" placeholder="Immagini" name="img[]" id="img" multiple/>
+          Carica Planimetria:
+          <input type="file" placeholder="Planimetrie" name="plan[]" id="plan" multiple/>
           <button type="submit" name="add">AGGIUNGI</button>
         </form>
       </div>

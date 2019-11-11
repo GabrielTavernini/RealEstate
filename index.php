@@ -39,7 +39,7 @@
                     <div class="row h-100 align-items-center">
                         <div class="col-12">
                             <div class="hero-slides-content">
-                                <h2 data-animation="fadeInUp" data-delay="100ms">Trova la tua casa</h2>
+                                <h2 data-animation="fadeInUp" data-delay="100ms">Trova il tuo immobile</h2>
                             </div>
                         </div>
                     </div>
@@ -272,11 +272,11 @@
     <!-- Active js -->
     <script src="js/active.js"></script>
 
-<script>
-	function propertyClicked(id) {
-		window.location.href = "./single-listings.php?id=" + id;
-	}
-</script>
+    <script>
+        function propertyClicked(id) {
+            window.location.href = "./single-listings.php?id=" + id;
+        }
+    </script>
 
 </body>
 

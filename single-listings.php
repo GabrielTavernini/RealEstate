@@ -5,8 +5,14 @@
 	$phonenumber = $infos->phonenumber;
 	$email = $infos->email;
 
+	$to = $email;
+	$subject = "WebSite - ".$_POST['contact-name'];
+	$txt = "Messaggio da: ".$_POST['contact-name']." <".$_POST['contact-number']." / ".$_POST['contact-email'].">\n\n".$_POST['contact-message'];
+	$headers = "From: ".$_POST['contact-email'];
+
 	if(isset($_POST['submit'])){
-		if(mail('1707gabri@gmail.com', $_POST['realtor-name'], $_POST['realtor-message'], 'From:'.$_POST['realtor-name'].'<'.$_POST['realtor-email'].' ; '.$_POST['realtor-number'].'>')){
+		$b = mail($to, $subject, $txt, $headers);
+		if($b == true){
 			echo "<script>
 				confirm(\"Mail Inviata!\")
 			</script>";
@@ -135,8 +141,7 @@
                         </ul>
                         <!-- Listings Btn Groups -->
                         <div class="listings-btn-groups">
-                            <a href="#" class="btn south-btn">Scarica Planimetrie</a>
-                            <a href="#" class="btn south-btn active">Do Something</a>
+                            <a href="./plans.php?<?php echo'id='.$_GET[id] ?>" class="btn south-btn">Scarica Planimetrie</a>
                         </div>
                     </div>
                 </div>
@@ -146,7 +151,7 @@
                             <img src="img/bg-img/profile.jpg" alt="">
                             <div class="realtor---info">
                                 <h2>Michele Fratangelo</h2>
-                                <p>Realtor</p>
+                                <p>Agente Immobiliare</p>
                                 <a href="tel:<?php echo $phonenumber ?>"><h6><img src="img/icons/phone-call.png" alt=""> <?php echo $phonenumber ?></h6></a>
                                 <a href="mailto:<?php echo $email ?>"><h6><img src="img/icons/envelope.png" alt=""> <?php echo $email ?></h6></a>
                             </div>
